@@ -80,7 +80,6 @@ class Student
       WHERE grade = 10
       LIMIT ?
     SQL
-
     DB[:conn].execute(sql, num).map do |row|
       self.new_from_db(row)
     end
@@ -108,7 +107,6 @@ class Student
     SQL
 
     DB[:conn].execute(sql, self.name, self.grade)
-    binding.pry
     @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
   end
   
